@@ -1,0 +1,43 @@
+body{
+    background-color: rgb(145, 197, 247);
+    text-align: center;
+    padding: auto;
+    font-family:"Segoe UI";
+}
+
+.Documento{
+    padding-left: 10px;
+}
+
+label{
+    color: #000;
+    text-align: justify;
+    padding: 10px;
+}
+
+.formularioRegistro .Documento, .Nombres, .Apellidos , .Edad, .Telefono,
+.Correo, .Contrasena, .Codigo, .Origen, .Destino, .Fecha, .Hora, .Numero_asientos,
+.piloto, .Avion, .Costo, .Estado{
+    padding: 10px;
+    text-align: center;
+}
+
+.formularioRegistro .btn_registro{
+    margin-top: 20px;
+    padding: 5px;
+    border-radius: 2px;
+    background-color: #9fd5d1;
+}
+
+#btn_registro:hover{
+    cursor: pointer;
+    background: rgb(55, 0, 221);
+}
+
+.formularioRegistro label {
+    font-weight: bold;
+    padding-left: 3em;
+    transition: cubic-bezier(0.075, 0.82, 0.165, 1);
+
+
+}

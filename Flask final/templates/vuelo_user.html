@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Buscar Vuelo</title>
+        <link rel="stylesheet" href= {{url_for("static", filename="css/style_buscar.css")}}>
+</head>
+<body>
+        
+        <form action="/buscar_reservas" method="post">
+        <section>
+                <div class="caja">
+                        <td><input type="text" id="vuelouser" name="vuelouser" placeholder="Vuelo "></td>
+                        <td><input type="text" id="reserva" name="reserva" placeholder="Reserva "></td>
+                        <td><input type="submit" id="boton" name="boton" value="Buscar"></td>
+                        <a href="/user">Volver</a>    
+                </div>
+         
+                <div class="tabla">
+                    
+                    <table class="table" >
+                        
+                        <thead>
+                            <tr>
+                                
+                                <th>Vuelo</th>
+                                <th>Piloto</th> 
+                                <th>Origen</th>
+                                <th>Destino</th>
+                                <th>Fecha</th>
+                                <th>Hora</th>
+                                <th>Avi�n</th>
+                                <th>Costo</th>
+                                <th>Estado del vuelo</th>
+                                
+                                
+                            </tr>
+                        </thead>
+                        <tbody id="myTable">
+                            {%for buscar in vuelouser %}  
+                            <tr>
+                                
+                                <td>{{buscar.0}}</td>
+                                <td>{{buscar.1}}</td>
+                                <td>{{buscar.2}}</td>
+                                <td>{{buscar.3}}</td>
+                                <td>{{buscar.4}}</td>
+                                <td>{{buscar.5}}</td>
+                                <td>{{buscar.6}}</td>
+                                <td>{{buscar.7}}</td>
+                                <td>{{buscar.8}}</td>
+                                
+                            </tr>
+                            
+                            
+                        </tbody> 
+                        {%endfor%} 
+                    </table>
+                    
+                </div>
+                <div class="tabla">
+                    
+                    <table class="table" >
+                        
+                        <thead>
+                            <tr>
+                                
+                                <th>Reserva</th>
+                                <th>Usuario</th> 
+                                <th>Asiento</th>
+                                                                                         
+                                
+                            </tr>
+                        </thead>
+                        <tbody id="myTable">
+                            {%for reserva in Dreserva %}  
+                            <tr>
+                                
+                                <td>{{reserva.0}}</td>
+                                <td>{{reserva.1}}</td>
+                                <td>{{reserva.3}}</td>
+                                {%endfor%} 
+                                                        
+                                                                
+                            </tr>                           
+                            
+                        </tbody> 
+                        
+                    </table>
+                    
+                </div>               
+                
+        </section>
+        </form>
+        {%for reserva in Dreserva %}
+        <form action="/enviar_calificacion/{{reserva.0}}" method="post">
+            <section>
+                <div class="caja">
+                        <td><select id="Calificacion" name="Calificacion">
+                            <option value="No seleccionado" selected>No seleccionado</option>
+                            <option value="1" id="1" name="1">1 - Insatisfecho</option>   
+                            <option value="2" id="2" name="2">2 - Indiferente</option> 
+                            <option value="3" id="3" name="3">3 - Satisfecho</option> 
+                        </select></td>
+                        <td><input type="text" id="comentario" name="comentario" placeholder="comentario"></td>
+                        <td><input type="submit" id="boton2" name="boton2" value="Enviar"></td>
+                        <a href="/user">Volver</a>    
+                </div>
+            </section>            
+        </form>
+        {%endfor%} 
+    <script src={{url_for("static", filename="js/validate_admin.js") }}></script>  
+</body>
+</html>

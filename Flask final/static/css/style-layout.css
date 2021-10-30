@@ -1,0 +1,90 @@
+@font-face {
+    font-family: 'icomoon';
+    src:  url('../fonts/icomoon.eot?dc9d5q');
+    src:  url('../fonts/icomoon.eot?dc9d5q#iefix') format('embedded-opentype'),
+      url('../fonts/icomoon.ttf?dc9d5q') format('truetype'),
+      url('../fonts/icomoon.woff?dc9d5q') format('woff'),
+      url('../fonts/icomoon.svg?dc9d5q#icomoon') format('svg');
+    font-weight: normal;
+    font-style: normal;
+    font-display: block;
+}
+
+header article .encabezado{
+    display: flex;
+    width: 85%;
+    margin: auto;
+    background-color: white;
+    border: 0.5px solid #000;
+    border-radius: 20px 20px 20px 20px;
+    box-shadow: 2px 2px 10px #666;  
+}
+header article .encabezado a{
+    display: flex;
+    margin-left: 850px;
+    color: black;
+    background-color: #9fd5d1;
+    font-family: "Segoe UI";
+    text-decoration: none;
+    box-shadow: 2px 2px 10px #666;
+    font-weight: bold;
+    border: 0.5px solid #9fd5d1;
+    margin-bottom: 30px;
+    padding: 1px 10px 1px 10px;
+    margin-top: 30px;
+    border-radius: 5px;
+}
+header article .encabezado img{
+    width: 70px;
+    height: 70px;
+    padding: 10px 10px 10px 10px;
+    border-radius: 20px 20px 20px 20px;
+    filter: drop-shadow(5px 5px 10px #444);
+}
+
+footer .pie {
+    display: flex;
+    width: 85%;
+    margin: auto;
+    background-color: white;
+    border-radius: 20px 20px 20px 20px;
+    border: 0.5px solid #000;
+    padding: 10px 10px 10px 10px;
+    box-shadow: 2px 2px 10px #666;  
+}
+footer .pie .iconos{
+    float: left;
+    margin-left: 20px; 
+}
+footer .pie .iconos .icon-phone::before{
+    font-family: 'icomoon';
+    content: "\e900";
+}
+footer .pie .iconos .icon-location2::before{
+    font-family: 'icomoon';
+    content: "\e904";
+}
+footer .pie .iconos .icon-cop::before{
+    font-family: 'icomoon';
+    content: "\e9c9";
+}
+footer .pie .redes{
+    padding: 20px 20px 20px 20px; 
+    margin-right: 420px;
+    display: flex;
+   
+}
+footer .pie .redes .icon-facebook::before{
+    padding-left: 400px;
+    font-family: 'icomoon';
+    content: "\e902";  
+}
+footer .pie .redes .icon-youtube::before{
+    font-family: 'icomoon';
+    content: "\e903";  
+    padding: 5px 5px 5px 5px;
+}
+footer .pie .redes .icon-mail4::before{
+    font-family: 'icomoon';
+    content: "\e901";
+}

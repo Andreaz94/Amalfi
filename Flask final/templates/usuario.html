@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Usuario</title>
+    <link rel="stylesheet" href={{url_for ("static", filename="/css/normalize.min.css") }}>
+    <link rel="stylesheet" href={{url_for ("static", filename="css/style-user.css") }}>
+    <script src="JS/script.js"></script>
+</head>
+<form  onsubmit="return validar_usuario()"  >
+<body>
+    <header>
+        <article>
+            <div class="encabezado">
+                <div class="logo">
+                    <img src={{url_for ("static", filename="img/logo.jpeg") }} >
+                </div>
+                <div class="usuario">
+                    <h1>{{session.nombre}}</h1>
+                    <div class="espacio"></div>
+                    <a href="/logout" type="button" class="btn">Cerrar sesion</a>
+                </div>
+            </div>            
+        </article>
+    </header>
+    <section>
+        <article class="disponibles">
+            <h3> Vuelos Disponibles</h3>           
+            <table border="1">
+                <thead>
+                    <tr>
+                        <th>&nbsp;</th>
+                        <th>Vuelo</th>
+                        <th>Origen</th>
+                        <th>Destino</th>
+                        <th>Fecha</th>
+                        <th>Hora</th>
+                        <!-- <th>Asientos Disponibles</th> -->
+                        <th>Reservar</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for vuel in Vuelo %}  
+                    <tr>
+                        <th></th>
+                        <td>{{vuel[0]}}</td>
+                        <td>{{vuel[2]}}</td>
+                        <td>{{vuel[3]}}</td>
+                        <td>{{vuel[4]}}</td>
+                        <td>{{vuel[5]}}</td>
+                        <!-- <td>
+                            <select>
+                                <option value="No seleccionado" selected>No seleccionado</option>
+                                <option value="Asiento 1">Asiento 1 </option>   
+                            </select> 
+                        </td> -->
+                        <td><a href="/reservar/{{vuel.0}}/{{session.id}}" type="button" class="btn" id="reservar">Reservar</a></td>
+                    </tr>
+                    {% endfor%}
+                </tbody>
+            </table>
+            <div class="espacio"></div>
+                <form action="" method="post" onsubmit="">
+                    <div class="caja">
+                        <div> <a href="/vuelo_user/" >Buscar Vuelo</a></div>
+                        <div class="espacio"></div>
+                    </div>
+                    </form>    
+            
+        </article>
+        {# Mostrar mensajes / errores si es que existen #}
+                            {% with messages = get_flashed_messages() %}
+                                {% if messages %}
+                                        
+                                    {% for message in messages %}
+                                        {{ message }}
+                                    {% endfor %}
+                                        
+                                {% endif %}
+                            {% endwith %}
+
+    </section>
+    <footer>
+        <div class="pie">
+            <div class="iconos">
+                    <div class="telefono">
+                        <span class="icon-phone">3625566</span>
+                    </div>
+                    
+                    <div class="direccion">
+                        <span class="icon-location2">cra 45 h 65</span>
+                    </div>
+                    
+                    <div class="copyright">
+                        <span class="icon-cop">Todos los derechos reservados</span>
+                    </div>
+                    
+            </div>
+            <div class="redes">
+                <div class="facebook">
+                    <span class="icon-facebook"></span>
+                </div>
+                <div class="youtube">
+                    <span class="icon-youtube"></span>
+                </div>
+                <div class="correo">
+                    <span class="icon-mail4"></span>
+                </div>
+            </div>
+        </div>
+    </footer>
+</form>    
+</body>
+</html>

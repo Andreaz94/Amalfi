@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aeropuerto Amalfi</title>
+    <link rel="stylesheet" href={{url_for("static", filename="css/style.css") }}>
+</head>
+<body>
+    <form action="" method="GET" name="paginaPrincipal">
+        <header>
+            <article>
+                <div class="encabezado">
+                    <div class="logo">
+                        <img src={{url_for("static", filename="img/logo.jpeg") }} >
+                    </div>
+                    <div class="botones">
+                        <div class="btnlogin"><a href="/login">Ingresar </a></div> 
+                        <div class="espacio"></div>
+                        <div class="btnregister"><a href="/register"> Registrarse</a> </div>
+                       
+                    </div>
+                </div>
+            </article>
+        </header>
+        <section>
+            <article class="container"> 
+                <div class="slider">
+                    <ul>
+                        <li><img src={{url_for("static", filename="img/aeropuerto1.jpeg")}} ></li>
+                        <li><img src={{url_for("static", filename="img/aeropuerto2.jpeg")}} ></li>
+                        <li><img src={{url_for("static", filename="img/aeropuerto3.jpeg")}} ></li>
+                        <li><img src={{url_for("static", filename="img/aeropuerto4.jpeg")}} ></li>
+                    </ul>
+                </div>
+                
+            </article>
+            <article class="information">
+                <div class="informacion">
+                    <h1>Aeropuerto Amalfi</h1>
+                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Culpa soluta odit laborum, rem sint magnam quidem, maiores consequatur molestias iure, nostrum nesciunt nulla veritatis. Voluptatum impedit qui voluptas sequi cum!</p>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus repellat recusandae quis illum vitae commodi porro dolor debitis molestias, dignissimos magni. Unde ad ut delectus! Tempora quis inventore sit? Accusamus?</p>
+                </div>
+            </article>
+        </section>
+            
+        <footer>
+            <div class="pie">
+                <div class="iconos">
+                        <div class="telefono">
+                            <span class="icon-phone">36256</span>
+                        </div>
+                        
+                        <div class="direccion">
+                            <span class="icon-location2">cra 45 h 65</span>
+                        </div>
+                        
+                        <div class="copyright">
+                            <span class="icon-cop">Todos los derechos reservados</span>
+                        </div>
+                        
+                </div>
+                <div class="redes">
+                    <div class="facebook">
+                        <span class="icon-facebook"></span>
+                    </div>
+                    <div class="youtube">
+                        <span class="icon-youtube"></span>
+                    </div>
+                    <div class="correo">
+                        <span class="icon-mail4"></span>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </form>
+</body>
+</html>

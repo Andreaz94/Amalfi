@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href={{url_for("static", filename="css/style-layout.css") }}>
+    
+</head>
+<body>
+    <header>
+        <article>
+            <div class="encabezado">
+                <div class="logo">
+                    <img src={{url_for("static", filename="img/logo.jpeg") }} >
+                </div>
+                <div class="enlace"><a href="/">Inicio</a></div>
+
+            </div>
+        </article>
+    </header>
+
+    {% block contenido %}
+    {% endblock %}
+    <footer>
+        <div class="pie">
+            <div class="iconos">
+                    <div class="telefono">
+                        <span class="icon-phone">3625566</span>
+                    </div>
+                    
+                    <div class="direccion">
+                        <span class="icon-location2">cra 45 h 65</span>
+                    </div>
+                    
+                    <div class="copyright">
+                        <span class="icon-cop">Todos los derechos reservados</span>
+                    </div>
+                    
+            </div>
+            <div class="redes">
+                <div class="facebook">
+                    <span class="icon-facebook"></span>
+                </div>
+                <div class="youtube">
+                    <span class="icon-youtube"></span>
+                </div>
+                <div class="correo">
+                    <span class="icon-mail4"></span>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

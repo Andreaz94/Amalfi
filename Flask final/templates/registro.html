@@ -1,0 +1,60 @@
+{% extends 'layout.html' %}
+{% block contenido %}
+<title>Registro</title>
+<link rel="stylesheet" href={{url_for("static", filename="css/normalize.min.css") }}>
+<link rel="stylesheet" href={{url_for("static", filename="css/style-register.css") }}>
+<link rel="stylesheet" href={{url_for("static", filename="css/style-layout.css") }}>
+<form action="{{url_for('hacer_registro')}}" method="post"  onsubmit="return validar_registro()"  >
+<section>
+    <article class="formulario">
+        <div class="formularioRegistro">
+            <div>
+                <h1>Formulario de Registro</h1>
+            </div>
+            <div class="Documento">
+                
+                <input type="text" name="identificacion" id="identificacion" minlength="7" maxlength="12" placeholder="Documento">
+            </div>
+            <div class="Nombres">
+                
+                <input type="text" name="name" id="name" placeholder="Nombres">
+            </div>
+            <div class="Apellidos">
+               
+                <input type="text" name="lastName" id="lastName" placeholder="Apellidos">
+            </div>
+            <div class="Telefono">
+                
+                <input type="text" name="phone" id="phone" minlength="7" maxlength="10" placeholder="Telefono">
+            </div>
+            <div class="Correo">
+                
+                <input type="text" name="email" id="email" placeholder="Correo">
+            </div>
+            <div class="Contrasena">
+                
+                <input type="password" name="passw" id="passw" placeholder="Contrasena">
+            </div>
+            <input type="submit" value="Registrarse" > 
+            <div class="espacio"></div>
+            <div class="iniciarsesion">
+                <a href="/login">Iniciar Sesión</a>
+            </div>
+            <div class="mensajes">   
+            {# Mostrar mensajes / errores si es que existen #}
+                {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                
+                    {% for message in messages %}
+                        {{ message }}
+                    {% endfor %}
+                
+                {% endif %}
+                {% endwith %}
+            </div>                 
+        </div>            
+    </article>
+</section>
+</form>
+<script src={{url_for("static", filename="js/validate_register.js") }}></script>
+{% endblock%}

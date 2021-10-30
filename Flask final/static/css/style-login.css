@@ -1,0 +1,72 @@
+body{
+    background-color: rgb(145, 197, 247);
+    font-family: "Segoe UI";
+}
+h1 {
+    font-family:  "Segoe UI";;
+    text-align: center;
+    color: black;
+    font-size: 50px;
+}
+form section .ingreso{
+    margin-top: 35px;
+    margin-bottom: 35px;
+    width: 81%; 
+    padding: 40px;
+    border-radius: 20px;
+    border: 0.5px solid #000;
+    margin-left: 100px;
+    background: white;
+    box-shadow: 2px 2px 10px #666;
+}
+form input[type="text"], form input[type="password"] {
+    width: 180px;
+}
+section  .ingreso .usuario{
+    display: flex;
+    margin-bottom: 15px;
+}
+section  .ingreso .contraseña{
+    display: flex;
+    margin-bottom: 15px;   
+}
+form input[type="submit"] {
+    font-weight: bold;
+    font-size: 15px;
+    display: block;
+    margin: auto;
+    margin-top: 25px;
+    margin-bottom: 45px;
+    background-color: #9fd5d1;
+    width: 180px;
+    border: none;
+    box-shadow: 2px 2px 10px #666;
+}
+section article .sesion .espacio{
+    margin-bottom: 20px;
+}
+section a {    
+    margin-left: 415px;
+    margin-top: 30px;
+    color: black;
+    background-color: #9fd5d1;
+    font-family: "Segoe UI";
+    text-decoration: none;
+    font-weight: bolder;
+    border: 0.5px solid #9fd5d1;
+    padding: 1px 40px 1px 40px;
+    box-shadow: 2px 2px 10px #666;  
+}
+section .ingreso .sesion input{
+    margin: auto;
+    height: 25px;
+    font-family: "Segoe UI";
+}
+section .ingreso .sesion .tipoUsuario select{ 
+    font-family: "Segoe UI";
+    font-size: 15px;
+    margin-left: 483px;
+    margin-bottom: 15px;
+    height: 30px;
+    width: 186px;  
+}

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Actualizar Vuelo</title>
+    <link rel="stylesheet" href={{url_for("static", filename="css/normalize.min.css")}}>
+    <link rel="stylesheet" href={{url_for("static", filename="css/formularios.css")}}>
+</head>
+<body>
+    <form action="/update_vuelo/{{vuelo.0}}" method="post" onsubmit="return validar_editVuelo()">
+    <div class="content-modal">
+        <header>
+            
+            <h2>Formulario de Actualizaci�n</h2>
+        </header>
+        <article class="formulario">
+            <div class="formularioRegistro">
+                <div class="Codigo">
+                    
+                    <input type="text" name="idvueloedit" id="idvueloedit" minlength="3" maxlength="12" checked="checked" value="{{vuelo.0}}" placeholder="Id del Vuelo">
+                </div>
+                <div class="piloto">
+                           
+                    
+                        <select id="idpiloto" name="idpiloto" placeholder="Id Piloto" >
+                            <option value="{{vuelo.1}}" selected>{{vuelo.1}}</option>
+                            {% for piloto in pilotos %}
+                            <option >{{piloto[0]}}</option>   
+                            {% endfor%}
+                        </select>
+                    
+                </div>
+                <div class="Origen">
+                   
+                    <input type="text" name="origenedit" id="origenedit" value="{{vuelo.2}}" placeholder="Origen">
+                </div>
+                <div class="Destino">
+                    
+                    <input type="text" name="destinoedit" id="destinoedit" value="{{vuelo.3}}" placeholder="Destino">
+                </div>
+                <div class="Fecha">
+                    
+                    <input type="date" name="fechaedit" id="fechaedit" value="{{vuelo.4}}" placeholder="Fecha">
+                </div>
+                <div class="Hora">
+                    
+                    <input type="clock" name="horaedit" id="horaedit" minlength="3" maxlength="6" value="{{vuelo.5}}" placeholder="Hora">
+                </div>
+                <div class="Avion">
+                    
+                    <input type="text" name="avionedit" id="avionedit" minlength="3" maxlength="5" value="{{vuelo.6}}" placeholder="Avion">
+                </div>
+                <div class="Costo">
+                  
+                    <input type="number" name="costoedit" id="costoedit" minlength="5" maxlength="7" value="{{vuelo.7}}" placeholder="Costo"> 
+                </div>
+                <div class="Estado">
+                  
+               
+                            <select id="estadoedit" name="estadoedit" aria-placeholder="Estado">
+                                <option  selected value="{{vuelo.8}}">{{vuelo.8}}</option>
+                                <option value="aterrizo" id="aterrizo" name="aterrizo">Aterriz�</option>   
+                                <option value="retrazado" id="retrazado" name="retrazado">Demorado</option> 
+                                <option value="cancelado" id="cancelado" name="cancelado">Cancelado</option>
+                                <option value="adelantado" id="adelantado" name="adelantado">Adelantado</option>
+                                <option value="programado" id="programado" name="programado">Programado</option>
+                            </select>
+                   
+                </div>
+                <input class="btn_registro" type="submit" value="Actualizar"> 
+                <a href="/administrator">Cancelar</a>                   
+            </div>            
+        </article>
+    </div>            
+</form>       
+<script src={{url_for("static", filename="js/validate_edits.js") }}></script>       
+
+</body>
+</html>

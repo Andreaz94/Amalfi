@@ -1,0 +1,70 @@
+body{
+    background-color: rgb(145, 197, 247);
+    font-family: "Segoe UI";
+}
+
+form input[type="text"] {
+    width: 180px;
+    height: 25px;
+    font-size: 14px;
+}
+
+form input[type="submit"] {
+    font-weight: bold;
+    font-family: "Segoe UI";
+    font-size: 17px;
+    
+    margin: auto;
+    margin-top: 25px;
+    margin-bottom: 40px;
+    background-color: #9fd5d1;
+    width: 140px;
+    height: 30px;
+    border-radius: 5px;
+}
+
+.caja{
+    text-align: center;
+    padding: 90px;
+    font-size: 15px; 
+}
+
+section .table{
+    border: 0.5px solid #000;
+    margin: auto;
+    background-color: white;
+}
+
+th, td {
+    width: 5%;
+    text-align: center;
+    vertical-align: top;
+    border: #000;
+    border-collapse: collapse;
+    caption-side: bottom;
+    border: 0.5px solid #000;
+}
+
+section .caja a{
+    font-weight: bold;
+    border: 0.5px solid #000;
+    color: black;
+    padding: 3px 10px 3px 10px;
+    text-decoration: none;
+    font-size: 17px;
+    font-family: "Segoe UI";
+    background-color: #9fd5d1;
+    border-radius: 5px;
+}
+section .tabla a{
+    
+    border: 0.5px solid #000;
+    color: black;
+    padding: 1px 10px 1px 10px;
+    text-decoration: none;
+    font-size: 17px;
+    font-family: "Segoe UI";
+    background-color: #9fd5d1;
+    border-radius: 5px;
+}
+

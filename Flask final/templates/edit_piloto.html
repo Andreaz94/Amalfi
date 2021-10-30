@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Actualizar Piloto</title>
+    <link rel="stylesheet" href={{url_for("static", filename="css/normalize.min.css")}}>
+    <link rel="stylesheet" href={{url_for("static", filename="css/formularios.css")}}>
+    
+</head>
+<body>
+    <form action="/update_piloto/{{piloto.0}}" method="post" onsubmit="return validar_editPiloto()">
+    <div>
+        <div class="content-modal">
+            <header>
+                <h2>Actualizar Piloto</h2>
+            </header>
+            <article class="formulario">
+                <div class="formularioRegistro">
+                    <div class="Documento">
+                        
+                        <input type="text" name="idpiloto" id="idpiloto" minlength="7" maxlength="12" checked="checked" value="{{piloto.0}}" placeholder="Identificación">
+                    </div>
+                    <div class="Nombres">
+                        
+                        <input type="text" name="namepiloto" id="namepiloto" value="{{piloto.1}}" placeholder="Nombres ">
+                    </div>
+
+                    <div class="Edad">
+                        
+                        <input type="number" name="edadpiloto" id="edadpiloto" value="{{piloto.3}}" placeholder="Edad">
+                    </div>
+                    <div class="Telefono">
+                        
+                        <input type="text" name="phonepiloto" id="phonepiloto" minlength="7" maxlength="10" value="{{piloto.4}}" placeholder="Teléfono">
+                    </div>
+                    <div class="Correo">
+                        
+                        <input type="text" name="emailpiloto" id="emailpiloto" value="{{piloto.2}}" placeholder="Correo">
+                    </div>
+                    <div class="Contrasena">
+                        
+                        <input type="password" name="passwpiloto" id="passwpiloto" value="{{piloto.5}}" placeholder="Contraseña">
+                    </div>
+                    <input class="btn_registro" type="submit" value="Actualizar">  
+                    <a href="/administrator">Cancelar</a>                  
+                </div>            
+            </article>
+        </div>
+       
+    </div>
+</form>
+<script src={{url_for("static", filename="js/validate_edits.js") }}></script>       
+
+</body>
+</html>

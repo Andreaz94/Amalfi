@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Buscar Piloto</title>
+        <link rel="stylesheet" href= {{url_for("static", filename="css/style_buscar.css")}}>
+</head>
+<body>
+        <form action="/buscarPiloto/" method="post">
+            <section>
+                <div class="caja">
+                    <td><input type="text" id="searchPiloto" name="searchPiloto" placeholder="Identificación Piloto"></td>
+                    <td><input type="submit" id="boton" name="boton" value="Buscar" ></td>
+                    
+                    <a href="/administrator">Volver</a> 
+                </div>
+         
+                <div class="tabla">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                            
+                                <th>Identificaci�n</th>
+                                <th>Nombre</th>
+                                <th>E-mail</th>
+                                <th>Edad</th>
+                                <th>Tel�fono</th>
+                                <th>Editar</th>
+                                <th>Eliminar</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {%for piloto in buscapiloto %}
+                            <tr>
+                                <td>{{piloto.0}}</td>
+                                <td>{{piloto.1}}</td>
+                                <td>{{piloto.2}}</td>
+                                <td>{{piloto.3}}</td>
+                                <td>{{piloto.4}}</td>
+                                
+                             
+                                <td>
+                                    <div> <a href="/editpiloto/{{piloto.0}}" >Editar</a></div>
+                                </td>
+                                <td>
+                                    <div><a href="/deletePiloto/{{piloto.0}}" onclick="return ConfirmDelete()">Eliminar</a></div>
+                                </td>
+                            </tr>
+                            {%endfor%}
+                        </tbody>
+                    </table>
+                   
+                </div>
+            </section>
+        </form>
+        <script src={{url_for("static", filename="js/validate_admin.js") }}></script>  
+</body>
+</html>

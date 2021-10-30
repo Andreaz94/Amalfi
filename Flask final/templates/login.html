@@ -1,0 +1,59 @@
+{% extends 'layout.html' %}
+{% block contenido %}
+<title>Ingreso</title>
+<link rel="stylesheet" href={{url_for("static", filename="css/style-login.css") }}>
+<!-- <form action="" method="GET" name="Ingreso" onsubmit="return validar_formulario()"> -->
+<form action="{{url_for('hacer_login')}}" method="post" onsubmit="return validar_formulario()">
+    <section> 
+        <article class="ingreso">
+            <div>
+                
+                <h1>Ingresar</h1>
+            </div>
+            <div class="sesion">
+                <div class="usuario">
+
+                    <input type="text" name="email" id="email" placeholder="Usuario"> 
+                </div>
+                <div class="contraseña">
+                    
+                    <input type="password" name="passw" id="passw" placeholder="Contraseña">
+                </div>
+                
+                <div class="tipoUsuario">
+                    
+                    <select name="Rol" class="form-select" id="Rol">
+                        <option value="No seleccionado" selected>Seleccione un Rol</option>
+                        <option value="Usuario">Usuario </option>  
+                        <option value="Piloto">Piloto </option>  
+                        <option value="Administrador">Administrador </option>   
+                    </select>
+                </div>
+                <div class="ingresar">
+                    <input type="submit" value="Ingresar">
+                </div>
+                
+                <div class="espacio"></div>
+                <div class="crearcuenta"> 
+                     
+                    <a href="/register"> Crear Cuenta</a> 
+                    
+                </div>
+                {# Mostrar mensajes / errores si es que existen #}
+                {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                
+                    {% for message in messages %}
+                        {{ message }}
+                    {% endfor %}
+                
+                {% endif %}
+                {% endwith %}
+            </div>
+        </article>  
+        
+    </section>
+</form>
+
+<script src={{url_for("static", filename="js/validate_login.js") }}></script>
+{% endblock%}

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Buscar Reserva</title>
+        <link rel="stylesheet" href= {{url_for("static", filename="css/style_buscar.css")}}>
+</head>
+<body>
+        <form action="/buscarReservaadmin/" method="post">
+            <section>
+                <div class="caja">
+                    <td><input type="text" id="searchreserva" name="searchreserva" placeholder="Reserva"></td>
+                    <td><input type="submit" id="boton" name="boton" value="Buscar" ></td>
+                    
+                    <a href="/administrator">Volver</a> 
+                </div>
+         
+                <div class="tabla">
+                    
+                    <table class="table" >
+                        
+                        <thead>
+                            <tr>
+                                
+                                <th>Reserva</th>
+                                <th>Usuario</th> 
+                                <th>Asiento</th>
+                                <th>Calificacion</th>
+                                <th>Comentario</th>
+                                <th></th>
+                                <th></th>
+                                
+                                
+                            </tr>
+                        </thead>
+                        <tbody id="myTable">
+                            {%for reserva in buscareserva %}  
+                            <tr>
+                                
+                                <td>{{reserva.0}}</td>
+                                <td>{{reserva.1}}</td>
+                                <td>{{reserva.3}}</td>
+                                <td>{{reserva.4}}</td>
+                                <td>{{reserva.5}}</td>
+                                
+                                
+                                <td>
+                                    <div><a href="/editReserva/{{reserva.0}}">Editar</a></div>
+                                </td>
+                                <td>
+                                    <div><a href="/deleteReserva/{{reserva.0}}" onclick="return ConfirmDelete()">Eliminar</a></div>
+                                </td>
+                                
+                            </tr>
+                            
+                            
+                        </tbody> 
+                        {%endfor%} 
+                    </table>
+                    
+                </div>
+            </section>
+        </form>
+        <script src={{url_for("static", filename="js/validate_admin.js") }}></script>  
+</body>
+</html>

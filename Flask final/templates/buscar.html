@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Buscar Usuario</title>
+        <link rel="stylesheet" href= {{url_for("static", filename="css/style_buscar.css")}}>
+</head>
+<body>
+        
+        <form action="/buscar/" method="post">
+        <section>
+                <div class="caja">
+                        <td><input type="text" id="searchUser" name="searchUser" placeholder="Identificación Usuario"></td>
+                        <td><input type="submit" id="boton" name="boton" value="Buscar"></td>
+                        <a href="/administrator">Volver</a>    
+                </div>
+         
+                <div class="tabla">
+                    
+                    <table class="table" >
+                        
+                        <thead>
+                            <tr>
+                                <th>Identificaci�n</th>
+                                <th>Nombre</th>
+                                <th>Apellido</th>
+                                <th>Tel�fono</th>
+                                <th>Email</th>
+                                <th>Editar</th>
+                                <th>Eliminar</th>
+                            
+        
+                            </tr>
+                        </thead>
+                        <tbody id="myTable">
+                            {%for buscar in busca %} 
+                            <tr>
+                        
+                                <td>{{buscar.0}}</td>
+                                <td>{{buscar.1}}</td>
+                                <td>{{buscar.2}}</td>
+                                <td>{{buscar.3}}</td>
+                                <td>{{buscar.4}}</td>
+                                
+                                <td>
+                                    <div> <a href="/edit/{{buscar.0}}" >Editar</a></div>
+                                <td>
+                                    <div><a href="/delete/{{buscar.0}}" onclick="return ConfirmDelete()">Eliminar</a>  </div>
+                                </td>
+                            </tr>
+                            
+                            
+                        </tbody>
+                        {%endfor%}
+                    </table>
+                    
+                </div>
+        </section>
+        </form>
+    <script src={{url_for("static", filename="js/validate_admin.js") }}></script>  
+</body>
+</html>

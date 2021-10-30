@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Actualizar Usuario</title>
+    <link rel="stylesheet" href={{url_for("static", filename="css/normalize.min.css")}}>
+    <link rel="stylesheet" href={{url_for("static", filename="css/formularios.css")}}>
+    
+</head>
+<body>
+    <form action="/update_user/{{user.0}}" method="post" onsubmit="return validar_editUser()">
+    <h1>Actualizar Usuario</h1>
+    <div class="formularioactualizar">
+        
+        <div class="Documento">
+            
+            <input type="text" name="iduser" id="iduser" minlength="7" maxlength="12" checked="checked"  value="{{user.0}}" placeholder="Documento">
+        </div>
+        <div class="Nombres">
+           
+            <input type="text" name="nameuser" id="nameuser" value="{{user.1}}" placeholder="Nombres">
+        </div>
+        <div class="Apellidos">
+            
+            <input type="text" name="lastNameuser" id="lastNameuser" value="{{user.2}}" placeholder="Apellidos">
+        </div>
+        <div class="Telefono">
+            
+            <input type="text" name="phoneuser" id="phoneuser" minlength="7" maxlength="10" value="{{user.3}}" placeholder="Telefono">
+        </div>
+        <div class="Correo">
+            
+            <input type="text" name="emailuser" id="emailuser" value="{{user.4}}" placeholder="Correo"> 
+        </div>
+        <div class="Contrasena">
+            
+            <input type="password" name="passwuser" id="passwuser" value="{{user.5}}" placeholder="Contraseña">
+            {# Mostrar mensajes / errores si es que existen #}
+                {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                
+                    {% for message in messages %}
+                    <li>{{ message }}</li>
+                    {% endfor %}
+                
+                {% endif %}
+                {% endwith %}
+        </div>
+        <input class="btn_registro" type="submit" value="Actualizar" > 
+        <a href="/administrator">Cancelar</a>                 
+    </div>
+</form>
+<script src={{url_for("static", filename="js/validate_edits.js") }}></script>       
+
+</body>
+</html>

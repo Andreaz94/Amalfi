@@ -1,0 +1,127 @@
+
+.formularioRegistro{
+    padding-top: 20px;
+}
+
+.formularioRegistro .Documento, .Nombres, .Apellidos , .Edad, .Telefono,
+.Correo, .Contrasena, .Codigo, .Origen, .Destino, .Fecha, .Hora, .Numero_asientos{
+    padding: 10px;
+    text-align: left;
+}
+select .cuadro{
+    text-align: center;
+}
+.formularioRegistro .btn_registro{
+    margin-top: 20px;
+    padding: 8px;
+    border-radius: 2px;
+    background-color:  #9fd5d1;
+}
+
+
+#show-modal{
+    text-align: center;
+    background:  rgb(200, 227, 253);
+    padding: 8px 8px;
+    color: rgb(0, 0, 0);
+    font-weight: 500;
+    font-size: 15px;
+    border-radius: 3px ;
+    text-decoration: none;
+    transition: all 0.15s linear;
+    font-weight: bold;
+}
+
+#show-modal:hover{
+    cursor: pointer;
+    background: rgb(255, 183, 169);
+}
+.modal{
+    position: fixed;
+    top: -100vh;
+    left: 0;
+    z-index: 99999999;
+    background:  rgba(200, 227, 253, 0.695);;
+    width: 200vw;
+    height: 100vh;
+    opacity: 0;
+    transition: opacity 0.35 ease;
+    border: 1px;
+}
+
+.modal .content-modal{
+    width: 100%;
+    max-width: 500px;
+    position: fixed;
+    left: 50%;
+    top: -100vh;
+    transition: top 0.35s ease;
+    margin-left: -250px;
+    background: #004add;
+    box-shadow: 0 1px 2px rgb(0, 2, 5);
+    border-radius: 2px;
+    z-index: 99999999;
+}
+
+.modal h2{
+    padding: 0.5em;
+    text-align: center;
+    color: rgb(0, 0, 0);
+    margin: 0;
+}
+
+.modal article{
+    height: 400px;
+    background: rgb(172, 172, 172); 
+}
+
+.close-modal{
+    color: rgb(29, 25, 143);
+    position: absolute;
+    top: 0.2em;
+    right: 0.375em;
+    margin: 0;
+    padding: 5px;
+    font-weight: bold;
+    font-size: 1.5em;
+    text-decoration: none;
+}
+
+.modal a{
+    font-size: 18px;
+    font-weight: bold;
+    color: black;
+    font-family: sans-serif;
+    
+}
+.modal a:hover{
+    color:rgb(8, 12, 11);
+}
+
+.modal:target{
+    opacity: 1;
+    top: 0;
+}
+
+.modal .btn-close-modal{
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 99999991;
+}
+
+.modal:target .content-modal{
+    top: 50px ;
+    transition: top 0.35s ease;
+}
+
+@media (max-width: 500px){
+    .modal .content-modal{
+        width: 90%;
+        max-width: none;
+        left: 5%;
+        margin-left: 0;
+    }
+
+}

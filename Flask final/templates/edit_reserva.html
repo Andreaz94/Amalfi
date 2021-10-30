@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Actualizar Reserva</title>
+    <link rel="stylesheet" href={{url_for("static", filename="css/normalize.min.css")}}>
+    <link rel="stylesheet" href={{url_for("static", filename="css/formularios.css")}}>
+</head>
+<body>
+    <form action="/update_reserva/{{reserva.0}}" method="post" onsubmit="return validar_editVuelo()">
+    <div class="content-modal">
+        <header>
+            
+            <h2>Formulario de Actualizaci?n</h2>
+        </header>
+        <article class="formulario">
+            <div class="formularioRegistro">
+                <div class="Codigo">
+                    <input type="text" name="idreserva" id="idreserva" minlength="3" maxlength="12" checked="checked" value="{{reserva.0}}" placeholder="Id de reserva">
+                </div>
+
+                <div class="usuario">
+                    <input type="text" name="idusuario" id="idusuario" value="{{reserva.1}}" placeholder="Usuario">
+                </div>
+
+                <div class="codigovuelo">
+                    <input type="text" name="idvuelo" id="idvuelo" value="{{reserva.2}}" placeholder="Id Vuelo">
+                </div>
+                
+                <div class="asiento">
+                    <input type="text" name="asiento" id="asiento" value="{{reserva.3}}" placeholder="Asiento">
+                </div>
+
+                <div class="calificacion">
+                    <input type="text" name="calificacion" id="calificacion" minlength="3" maxlength="6" value="{{reserva.4}}" placeholder="Calificacion" disabled>
+                </div>
+
+                <div class="comentario">
+                    <input type="text" name="comentario" id="comentario" minlength="3" maxlength="5" value="{{reserva.5}}" placeholder="Comentario" disabled>
+                </div>
+                
+                <input class="btn_registro" type="submit" value="Actualizar"> 
+                <a href="/administrator">Cancelar</a>                   
+            </div>            
+        </article>
+    </div>            
+</form>       
+<script src={{url_for("static", filename="js/validate_edits.js") }}></script>       
+
+</body>
+</html>

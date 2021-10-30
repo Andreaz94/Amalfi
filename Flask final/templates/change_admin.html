@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cambio Administrador</title>
+    <link rel="stylesheet" href= {{url_for("static", filename="css/style-changeadmin.css")}}>
+</head>
+<body>
+    <form action="/updateadmin/" method="post" onsubmit="return ValidarAdminNew()">
+        <section>
+            <div class="espaciomargen"></div>
+            <div class="contenedor">
+                <div><h1>Actualizacion datos del Administrador</h1></div>
+                <div class="Correoactual">
+                    
+                    <input type="text" name="emailactual" id="emailactual" placeholder="Correo Actual">
+                </div>
+                <div class="Identificacion">
+                
+                    <input type="number" name="IdNuevo" id="IdNuevo" minlength="7" maxlength="12" placeholder="Identificación">
+                </div>
+                <div class="Correonuevo">
+                    
+                    <input type="text" name="emailnuevo" id="emailnuevo" placeholder="Correo Nuevo"> 
+                </div>
+                <div class="nuevacontrasena">
+                    <input type="password" name="newpassword" id="newpassword" placeholder="Nueva contraseña">
+                </div>
+                <div class="confirmcontrasena">
+                    <input type="password" name="confirmcontrasena" id="confirmcontrasena" placeholder="Confirme contraseña">
+                </div>
+                <div class="caja">
+                    <input class="btn_actualizar" type="submit" value="Actualizar">
+                    <div class="espacio"></div>
+                    <a href="/administrator">Cancelar</a>   
+                </div>
+                {# Mostrar mensajes / errores si es que existen #}
+                {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                
+                    {% for message in messages %}
+                        {{ message }}
+                    {% endfor %}
+                
+                {% endif %}
+                {% endwith %}
+            </div>
+        </section>
+    </form>
+    <script src={{url_for("static", filename="js/validate_admin.js") }}></script>  
+</body>
+</html>

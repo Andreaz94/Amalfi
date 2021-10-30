@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Administrador</title>
+    <link rel="stylesheet" href={{url_for("static", filename="css/normalize.min.css")}}>
+    <link rel="stylesheet" href={{url_for("static", filename="css/estilo-layout.css")}}>
+    <link rel="stylesheet" href={{url_for("static", filename="css/estilo-ventana.css")}}>
+    <link rel="stylesheet" href= {{url_for("static", filename="css/style-admin.css")}}>
+    <script src={{url_for("static", filename="js/jquery-3.6.0.min.js") }}></script>  
+    
+</head>
+<body>
+    <header>
+        <article>
+            <div class="encabezado">
+                <div class="logo">
+                    <img src={{url_for("static", filename="img/logo.jpeg") }} >
+                </div>
+                <div class="inicio">
+                    <div class="logo1">
+                        <em class="fas fa-user-circle"></em>
+                    </div>
+                    <div class="usuario">
+                        <h1>{{session.email}}</h1>
+                        <div class="espacio"></div>
+                        <div class="btnsesion"><a href="/logout" type="button" class="btn">Cerrar sesion</a></div>
+                        <div class="espacio"></div>
+                        <div class="btnchange"> <a href="/change/" type="button">Cambiar contraseña</a></div>
+                        <div class="espacio"></div>
+                    </div>    
+                    </div>
+                </div>
+            </div>            
+        </article>
+    </header>
+    
+    <section> 
+        <div class="barra">
+            <h1>Administrador</h1>
+        <div class="ventanas">
+            <body>
+                <div class="mytabs">
+                    <input type="radio" id="tab1" name="ventana1" checked="checked">
+                    <label class="pestana" for="tab1" ><span class="fas fa-users"></span><span class="tab-text"> Usuarios</span></label>
+                        <div class="info">
+                            {# Mostrar mensajes / errores si es que existen #}
+                            {% with messages = get_flashed_messages() %}
+                                {% if messages %}
+                                        
+                                    {% for message in messages %}
+                                        {{ message }}
+                                    {% endfor %}
+                                        
+                                {% endif %}
+                            {% endwith %}
+                            <p>
+                            <div class="crear1">
+                                <a href="#modal1" id="show-modal">Crear Nuevo Usuario</a>
+                            
+                                <aside id="modal1" class="modal">
+                                    <div class="content-modal">
+                                        <header>
+                                            <a href="#" class="close-modal">X</a>
+                                            <h2>Formulario de Registro</h2>
+                                        </header>
+                                        <article class="formulario">
+                                            <form action="{{url_for('hacer_registrousuario')}}" method="post"  onsubmit="return validar_registrousuario()"> 
+                                            <div class="formularioRegistro">
+                                                
+                                                <div class="Documento">
+                                                    
+                                                    <input type="text" name="identificacion" id="identificacion" minlength="7" maxlength="12" checked="checked" placeholder="Documento: ">
+                                                </div>
+                                                <div class="Nombres">
+                                                    
+                                                    <input type="text" name="name" id="name" placeholder="Nombres: ">
+                                                </div>
+                                                <div class="Apellidos">
+                                                    
+                                                    <input type="text" name="lastName" id="lastName" placeholder="Apellidos: ">
+                                                </div>
+                                                <div class="Telefono">
+                                                    
+                                                    <input type="text" name="phone" id="phone" minlength="7" maxlength="10" placeholder="Teléfono: ">
+                                                </div>
+                                                <div class="Correo">
+                                                    
+                                                    <input type="text" name="email" id="email" placeholder="Correo: ">
+                                                </div>
+                                                <div class="Contrasena">
+                                                    
+                                                    <input type="password" name="passw" id="passw" placeholder="Contraseña: ">
+                                                </div>
+                                                <input class="btn_registro" type="submit" value="Registrarse">               
+                                                
+                                            </div>
+                                            </form>            
+                                        </article>
+                                    </div>
+                                    <a href="#" class="btn-close-modal"></a>
+                                </aside>
+                            </div>
+                        <form action="" method="post" onsubmit="">
+                        <div class="caja">
+                            <div> <a href="/buscarusuario/" >Buscar Usuario</a></div>
+                            <div class="espacio"></div>
+                        </div>
+                        </form>  
+                        <div class="tabla">
+                            
+                            <table class="table" >
+                                
+                                <thead>
+                                    <tr>
+                                        <th>Identificaci�n</th>
+                                        <th>Nombre</th>
+                                        <th>Apellido</th>
+                                        <th>Tel�fono</th>
+                                        <th>Email</th>
+                                    
+                                        <th></th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody id="myTable">
+                                    {%for user in users %} 
+                                    <tr>
+                                
+                                        <td>{{user.0}}</td>
+                                        <td>{{user.1}}</td>
+                                        <td>{{user.2}}</td>
+                                        <td>{{user.3}}</td>
+                                        <td>{{user.4}}</td>
+                                        
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td>
+                                            <div> <a href="/edit/{{user.0}}" >Editar</a></div>
+                                        <td>
+                                            <div><a href="/delete/{{user.0}}" onclick="return ConfirmDelete()">Eliminar</a>  </div>
+                                        </td>
+                                    </tr>
+                                    
+                                    
+                                </tbody>
+                                {%endfor%}
+                            </table>
+                            
+                        </div>
+                    </div>
+                    
+                    <input type="radio" id="tab2" name="ventana1">
+                    <label class="pestana" for="tab2"> <span class="fas fa-user-shield"></span><span class="tab-text"> Pilotos</span></label>
+                    <div class="info">
+                        <p>
+                        <div class="crear1">
+                            <a href="#modal2" id="show-modal">Crear Nuevo Piloto</a>
+
+                            <aside id="modal2" class="modal">
+                                <div class="content-modal">
+                                    <header>
+                                        <a href="#" class="close-modal">X</a>
+                                        <h2>Formulario de Registro</h2>
+                                    </header>
+                                    <article class="formulario">
+                                        <form action="{{url_for('hacer_registropiloto')}}"  method="post"  onsubmit="return validar_registropiloto()">
+                                        <div class="formularioRegistro">
+                                            <div class="Documento">
+                                                
+                                                <input type="text" name="idpiloto" id="idpiloto" minlength="7" maxlength="12" checked="checked" placeholder="Documento: ">
+                                            </div>
+                                            <div class="Nombres">
+                                                
+                                                <input type="text" name="namepiloto" id="namepiloto" placeholder="Nombres: ">
+                                            </div>
+                                            <div class="Edad">
+                                                
+                                                <input type="number" name="edadpiloto" id="edadpiloto" placeholder="Edad: ">
+                                            </div>
+                                            <div class="Telefono">
+                                                
+                                                <input type="text" name="phonepiloto" id="phonepiloto" minlength="7" maxlength="10" placeholder="Teléfono: " >
+                                            </div>
+                                            <div class="Correo">
+                                                
+                                                <input type="text" name="emailpiloto" id="emailpiloto" placeholder="Correo: ">
+                                            </div>
+                                            <div class="Contrasena">
+                                                
+                                                <input type="password" name="passwpiloto" id="passwpiloto" placeholder="Contraseña: ">
+                                            </div>
+                                            <input class="btn_registro" type="submit" value="Registrar">   
+                                                        
+                                        </div>  
+                                        </form>          
+                                    </article>
+                                </div>
+                                <a href="#" class="btn-close-modal"></a>
+                            </aside>
+
+                        </div>
+                        <form action="" method="post" onsubmit="">
+                            <div class="caja">
+                                <div> <a href="/buscarpiloto/" >Buscar Piloto</a></div>
+                                <div class="espacio"></div>
+                            </div>
+                            </form>               
+                        <div class="tabla">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                    
+                                        <th>Identificaci�n</th>
+                                        <th>Nombre</th>
+                                        <th>E-mail</th>
+                                        <th>Edad</th>
+                                        <th>Tel�fono</th>
+                                        <th></th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {%for piloto in pilotos%}
+                                    <tr>
+                                        <td>{{piloto.0}}</td>
+                                        <td>{{piloto.1}}</td>
+                                        <td>{{piloto.2}}</td>
+                                        <td>{{piloto.3}}</td>
+                                        <td>{{piloto.4}}</td>
+                                        
+                                     
+                                        <td>
+                                            <div> <a href="/editpiloto/{{piloto.0}}" >Editar</a></div>
+                                        </td>
+                                        <td>
+                                            <div><a href="/deletePiloto/{{piloto.0}}" onclick="return ConfirmDelete()">Eliminar</a></div>
+                                        </td>
+                                    </tr>
+                                    {%endfor%}
+                                </tbody>
+                            </table>
+                           
+                        </div></p>
+                    </div>
+            
+                    <input type="radio" id="tab3" name="ventana1">
+                    <label class="pestana" for="tab3"> <span class="fas fa-plane-departure"></span><span class="tab-text"> Vuelos</span></label>
+                    <div class="info">
+                        <p>
+                        <div class="crear1">
+
+                            <a href="#modal3" id="show-modal">Crear Nuevo Vuelo</a>
+
+                            <aside id="modal3" class="modal">
+                                <div class="content-modal">
+                                    <header>
+                                        <a href="#" class="close-modal">X</a>
+                                        <h2>Formulario de Registro</h2>
+                                    </header>
+                                    <article class="formulario">
+                                        <form action="{{url_for('hacer_registrovuelo')}}"  method="post"  onsubmit="return validar_registrovuelo()">
+                                            
+                                        <div class="formularioRegistro">
+                                            
+                                            <div class="Codigo">
+                                                <input class="cuadro" type="text"  name="idvuelo" id="idvuelo" minlength="3" maxlength="12" checked="checked" placeholder="Código: ">
+                                            </div>
+                                            <div class="Piloto">
+                                       
+                                                <td class="caja-text"> 
+                                                        <select id="idpilotovuelo" name="idpilotovuelo" >
+                                                            <option value="No seleccionado" selected>No seleccionado</option>
+                                                            {% for piloto in pilotos %}
+                                                            <option >{{piloto[0]}}</option>   
+                                                            {% endfor%}
+                                                        </select>
+                                                </td>
+                                            </div>
+                                            <div class="Origen">
+                                                
+                                                <input type="text" name="origen" id="origen" placeholder="Origen  ">
+                                            </div>
+                                            <div class="Destino">
+                                                
+                                                <input type="text" name="destino" id="destino" placeholder="Destino">
+                                            </div>
+                                            <div class="Fecha">
+                                             
+                                                <input type="date" name="fecha" id="fecha" placeholder="Fecha">
+                                            </div>
+                                            <div class="Hora">
+                                                
+                                                <input type="clock" name="hora" id="hora" placeholder="Hora" >
+                                            </div>
+                                            <div class="Avion">
+                                                
+                                                <input type="text" name="avion" id="avion" minlength="3" maxlength="5" placeholder="Avion">
+                                            </div>
+                                            <div class="Costo">
+                                                
+                                                <input type="number" name="costo" id="costo" minlength="5" maxlength="7" placeholder="Costo">
+                                            </div>
+                                            <div class="Estado">
+                                                
+                                                <td class="caja-text"> 
+                                                        <select id="estado" name="estado">
+                                                            <option value="No seleccionado" selected>No seleccionado</option>
+                                                            <option value="aterrizo" id="aterrizo" name="aterrizo">Aterriz�</option>   
+                                                            <option value="retrazado" id="retrazado" name="retrazado">Demorado</option> 
+                                                            <option value="cancelado" id="cancelado" name="cancelado">Cancelado</option>
+                                                            <option value="adelantado" id="adelantado" name="adelantado">A tiempo</option>
+                                                            <option value="programado" id="programado" name="programado">Programado</option>
+                                                        </select>
+                                                </td>
+                                            </div>
+                                            <input class="btn_registro" type="submit" value="Registrar">  
+                                                            
+                                        </div> 
+                                        </form>           
+                                    </article>
+                                </div>
+                                <a href="#" class="btn-close-modal"></a>
+                            </aside>
+                        </div>
+                        <form action="" method="post" onsubmit="">
+                            <div class="caja">
+                                <div> <a href="/buscarvuelo/" >Buscar Vuelo</a></div>
+                                <div class="espacio"></div>
+                            </div>
+                            </form>                
+                        <div class="tabla">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>C�digo de Vuelo</th>
+                                        <th>Piloto</th>
+                                        <th>Origen</th>
+                                        <th>Destino</th>
+                                        <th>Fecha</th>
+                                        <th>Hora</th>
+                                        <th>Avion</th>
+                                        <th>costo</th>
+                                        <th>Estado</th>
+                                        <th></th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for vuelo in vuelos %}
+                                    <tr>
+                                        <td>{{vuelo.0}}</td>
+                                        <td>{{vuelo.1}}</td>
+                                        <td>{{vuelo.2}}</td>
+                                        <td>{{vuelo.3}}</td>
+                                        <td>{{vuelo.4}}</td>
+                                        <td>{{vuelo.5}}</td>
+                                        <td>{{vuelo.6}}</td>
+                                        <td>{{vuelo.7}}</td>
+                                        <td>{{vuelo.8}}</td>
+
+                                        <td>
+                                            <div><a href="/editVuelo/{{vuelo.0}}">Editar</a></div>
+                                        </td>
+                                        <td>
+                                            <div><a href="/deleteVuelo/{{vuelo.0}}" onclick="return ConfirmDelete()">Eliminar</a></div>
+                                        </td>
+                                    </tr>
+                                    {%endfor%}
+                                </tbody>
+                            </table>
+                        </div></p>
+                    </div>
+                    
+                    <input type="radio" id="tab4" name="ventana1">
+                    <label class="pestana" for="tab4"> <span class="fas fa-plane-departure"></span><span class="tab-text"> Reservas</span></label>
+                    <div class="info">
+                        <p>
+                        <div class="crear1">
+
+                            <a href="#modal4" id="show-modal">Crear Nueva Reserva</a>
+
+                            <aside id="modal4" class="modal">
+                                <div class="content-modal">
+                                    <header>
+                                        <a href="#" class="close-modal">X</a>
+                                        <h2>Formulario de Reserva</h2>
+                                    </header>
+                                    <article class="formulario">
+                                        <form action="{{url_for('hacer_registroreserva')}}"  method="post"  onsubmit="">
+                                        <div class="formularioRegistro">
+                                            <div class="Reserva">
+                                                <input class="cuadro" type="text" name="idreserva" id="idreserva" minlength="3" maxlength="12" checked="checked" placeholder="Reserva: ">
+                                            </div>
+                                            <div class="usuario">
+                                                <td class="caja-text"> 
+                                                        <select id="idusuario" name="idusuario" >
+                                                            <option value="No seleccionado" selected>No seleccionado</option>
+                                                            {% for user in users %}
+                                                            <option >{{user[0]}}</option>   
+                                                            {% endfor%}
+                                                        </select>
+                                                </td>
+                                            </div>
+                                            <div class="vuelo">
+                                                <td class="caja-text"> 
+                                                        <select id="idvuelo" name="idvuelo" >
+                                                            <option value="No seleccionado" selected>No seleccionado</option>
+                                                            {% for vuelo in vuelos %}
+                                                            <option >{{vuelo[0]}}</option>   
+                                                            {% endfor%}
+                                                        </select>
+                                                </td>
+                                            </div>
+                                            <div class="Asiento">
+                                                <input class="cuadro" type="number"  name="asiento" id="asiento" placeholder="Asiento: ">
+                                            </div>
+                                            <div class="Calificacion">
+                                                <input class="cuadro" type="number"   name="calificacion" id="calificacion" max="5" placeholder="Calificación: ">
+                                            </div>
+                                            <div class="Comentario">
+                                                <input class="cuadro" type="text"  name="comentario" id="comentario" placeholder="Comentario: ">
+                                            </div>
+                                            <input class="btn_registro" type="submit" value="Registrar">                 
+                                        </div> 
+                                        </form>           
+                                    </article>
+                                </div>
+                                <a href="#" class="btn-close-modal"></a>
+                            </aside>
+                        </div>
+                        <form action="" method="post" onsubmit="">
+                            <div class="caja">
+                                <div> <a href="/buscarReserva/" >Buscar Reserva</a></div>
+                                <div class="espacio"></div>
+                            </div>
+                            </form>
+                                      
+                        <div class="tabla">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>C�digo de Reserva</th>
+                                        <th>Usuario</th>
+                                        <th>Vuelo</th>
+                                        <th>Asiento</th>
+                                        <th>Calificacion</th>
+                                        <th>Comentario</th>
+                                        <th>Editar</th>
+                                        <th>Eliminar</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for reserva in reservas %}
+                                    <tr>    
+                                        <td>{{reserva.0}}</td>
+                                        <td>{{reserva.1}}</td>
+                                        <td>{{reserva.2}}</td>
+                                        <td>{{reserva.3}}</td>
+                                        <td>{{reserva.4}}</td>
+                                        <td>{{reserva.5}}</td>
+                                        
+                                        <td>
+                                            <div><a href="/editReserva/{{reserva.0}}">Editar</a></div>
+                                        </td>
+                                        <td>
+                                            <div><a href="/deleteReserva/{{reserva.0}}" onclick="return ConfirmDelete()">Eliminar</a></div>
+                                        </td>
+                                    </tr>
+                                    {%endfor%}
+                                </tbody>
+                            </table>
+                        </div></p>
+                    </div>
+
+
+                    </div>
+            
+                </div>
+            
+            
+            </body>
+            
+    </section>
+    </form>
+            <section>
+                <footer>
+                    <div class="pie">
+                        <div class="iconos">
+                                <div class="telefono">
+                                    <span class="icon-phone">3625566</span>
+                                </div>
+                                
+                                <div class="direccion">
+                                    <span class="icon-location2">cra 45 h 65</span>
+                                </div>
+                                
+                                <div class="copyright">
+                                    <span class="icon-cop">Todos los derechos reservados</span>
+                                </div>
+                                
+                        </div>
+                        <div class="redes">
+                            <div class="facebook">
+                                <span class="icon-facebook"></span>
+                            </div>
+                            <div class="youtube">
+                                <span class="icon-youtube"></span>
+                            </div>
+                            <div class="correo">
+                                <span class="icon-mail4"></span>
+                            </div>
+                        </div>
+                    </div>
+                </footer>
+            
+            </section>
+    </section>
+    <script src={{url_for("static", filename="js/validate_admin.js") }}></script>  
+                
+</body>
+</html>

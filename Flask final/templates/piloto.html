@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Piloto</title>
+        <link rel="stylesheet" href={{url_for("static", filename="css/normalize.min.css")}}>
+        <link rel="stylesheet" href={{url_for ("static", filename="css/style-piloto.css") }}>
+    </head>
+
+    <body>
+        <header>
+            <article>
+                <div class="encabezado">
+                    <div class="logo">
+                        <img src={{url_for("static", filename="img/logo.jpeg") }} >
+                    </div>
+                    <div class="inicio">
+                        <div class="logo1">
+                            <em class="fas fa-user-circle"></em>
+                        </div>
+                        <div class="usuario">
+                            <h1>{{session.email}}</h1>
+                            <div class="espacio"></div>
+                            <a href="/logout" type="button" class="btn">Cerrar sesion</a>
+                        </div>
+                    </div>
+                </div>
+            </article>
+        </header>
+        <section>
+            <article>
+                <div class="subtitulo">
+                    <p>
+                        <h2>Piloto</h2>
+                    </p>
+                </div>
+                <div class="tabs" >
+                    <input type="radio" id="inf_per" name="tabs" checked="checked">
+                    <label for="inf_per" >Informacion personal</label>
+                    <div class="tab">
+                        <div class="Documento">
+                            <label>Documento: </label>
+                            <input type="text" name="id" id="id" minlength="7" maxlength="12" checked="checked" value="{{pilot.0}}" disabled>
+                        </div>
+                        <div class="Nombres">
+                            <label>Nombres: </label>                            <input type="text" name="nameuser" id="nameuser" value="{{pilot.1}}" disabled>
+                        </div>
+                        <div class="Email">
+                            <label>Email: </label>
+                            <input type="text" name="Email" id="Email" value="{{pilot.2}}" disabled>
+                        </div>
+                        <div class="Edad">
+                            <label>Edad: </label>
+                            <input type="text" name="Edad" id="Edad" minlength="7" maxlength="10" value="{{pilot.3}}" disabled>
+                        </div>
+                        <div class="Telefono">
+                            <label> Telefono: </label>
+                            <input type="text" name="Telefono" id="Telefono" value="{{pilot.4}}" disabled>
+                        </div>
+                    </div>
+                    <input type="radio" id="vuel_asig" name="tabs">
+                    <label for="vuel_asig">Vuelos asignados</label>
+                    <div class="tab">
+                        <table id="tablaVuelos" class="tabla">
+                            <thead></thead>
+                        </table>
+                        <table class="tabla">
+                            <tr>
+                                <th>Codigo vuelo</th>
+                                <th>Origen</th>
+                                <th>Destino</th>
+                                <th>Fecha</th>
+                                <th>Hora</th>
+                                <th>Avion</th>
+                            </tr>
+                            {% for vuelo in vuelos %}
+                            <tr>
+                                <td>{{vuelo[0]}}</td>
+                                <td>{{vuelo[2]}}</td>
+                                <td>{{vuelo[3]}}</td>
+                                <td>{{vuelo[4]}}</td>
+                                <td>{{vuelo[5]}}</td>
+                                <td>{{vuelo[6]}}</td>
+                            </tr>
+                            {%endfor%}
+                        </table>
+                    </div>
+                </div>
+            </article>
+        </section>
+
+        <footer>
+            <div class="pie">
+                <div class="iconos">
+                    <div class="telefono">
+                        <span class="icon-phone">3625566</span>
+                    </div>
+                    <div class="direccion">
+                        <span class="icon-location2">cra 45 h 65</span>
+                    </div>
+                    <div class="copyright">
+                        <span class="icon-cop">Todos los derechos reservados</span>
+                    </div>
+                </div>
+                <div class="redes">
+                    <div class="facebook">
+                        <span class="icon-facebook"></span>
+                    </div>
+                    <div class="youtube">
+                        <span class="icon-youtube"></span>
+                    </div>
+                    <div class="correo">
+                        <span class="icon-mail4"></span>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </body>
+</html>
